@@ -18,7 +18,8 @@ spec = Gem::Specification.new do |s|
   s.summary = SUMMARY
 
   # Uncomment this to add a dependency
-  # s.add_dependency "foo"
+  s.add_dependency "nokogiri"
+  s.add_dependency "rest-client"
 
   s.require_path = 'lib'
   s.autorequire = GEM
