@@ -25,15 +25,15 @@ class TeamCityClient
     # remaining. Once the build is complete, parse the page for any
     # new errors and return the number.
     begin
-        html = RestClient.get("http://#{@host}/viewLog.html?buildId=#{build_id}&guest=1")
-        doc = Nokogiri::HTML(html)
-        parts = doc.css(".statusTable").text.split("Time left:")
-        time_left = parts.length > 1 ? parts[1].split("(")[0].gsub(/\s+/, "") : ""
-        if show_progress && !time_left.empty?
-          STDOUT.write "\rTime left: #{time_left} (CTRL-C to abort)"
-          STDOUT.flush
-        end
-        sleep 1
+      html = RestClient.get("http://#{@host}/viewLog.html?buildId=#{build_id}&guest=1")
+      doc = Nokogiri::HTML(html)
+      parts = doc.css(".statusTable").text.split("Time left:")
+      time_left = parts.length > 1 ? parts[1].split("(")[0].gsub(/\s+/, "") : ""
+      if show_progress && !time_left.empty?
+        STDOUT.write "\rTime left: #{time_left} (CTRL-C to abort)"
+        STDOUT.flush
+      end
+      sleep 1
     end until time_left.empty?
     doc.css(".failCount strong").text.to_i
   end
