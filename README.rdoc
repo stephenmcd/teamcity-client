@@ -1,0 +1,12 @@
+== teamcity-client
+
+Team City Ghetto HTTP client.
+
+Authentication is not yet supported and therefore guest access is
+required.
+
+Currently supports retrieving the number of new build errors for
+a given build.
+
+Initialize with a host:port string for grabbing and parsing pages
+in the Team City interface.
