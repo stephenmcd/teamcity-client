@@ -18,6 +18,10 @@ class TeamCityClient
     @host = host
   end
 
+  def version
+    "0.0.1"
+  end
+
   def build_errors(build_id, show_progress=true)
     # Grab the build page for the given build ID and parse the page
     # for amount of time left for the build to complete. Keep hitting
