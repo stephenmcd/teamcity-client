@@ -35,6 +35,7 @@ begin
 rescue OptionParser::ParseError
   # Display all options if anything goes wrong.
   puts option_parser
+  exit
 end
 
 # Connect to the Team City server and display the number of new errors
