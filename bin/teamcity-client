@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require "rubygems"
+require "optparse"
+require "teamcity-client"
+
+options = {:address => "teamcity:8111"}
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "\nUsage: teamcity-client [options]\n\n"
+
+  opts.on("-b", "--build ID", Integer, "Check status and new errors for the given build ID (required)") do |v|
+    options[:build] = v
+  end
+
+  opts.on("-a", "--address HOST:PORT", String, "Host and port of the TeamCity server (default: #{options[:address]})") do |v|
+    options[:address] = v
+  end
+
+  opts.on("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on("-v", "--version", "Show version") do
+    puts OptionParser::Version.join('.')
+    exit
+  end
+end
+
+begin
+  option_parser.parse!
+  # Raise a parse error if the build arg isn't given, since it's required.
+  raise OptionParser::ParseError if options[:build].nil?
+rescue OptionParser::ParseError
+  # Display all options if anything goes wrong.
+  puts option_parser
+end
+
+# Connect to the Team City server and display the number of new errors
+# for the given build.
+teamcity_client = TeamCityClient.new options[:address]
+errors = teamcity_client.build_errors(options[:build])
+s = errors == 1 ? "" : "s"
+puts "#{errors} error#{s} found for build #{options[:build]}"
