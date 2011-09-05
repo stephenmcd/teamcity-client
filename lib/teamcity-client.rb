@@ -14,7 +14,7 @@ require "nokogiri"
 # in the Team City interface.
 class TeamCityClient
 
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
 
   def initialize(host)
     @host = host
