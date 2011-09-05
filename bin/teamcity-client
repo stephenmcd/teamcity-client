@@ -23,7 +23,7 @@ option_parser = OptionParser.new do |opts|
   end
 
   opts.on("-v", "--version", "Show version") do
-    puts TeamCityClient.version
+    puts TeamCityClient::VERSION
     exit
   end
 end

@@ -14,12 +14,10 @@ require "nokogiri"
 # in the Team City interface.
 class TeamCityClient
 
+  VERSION = "0.0.1"
+
   def initialize(host)
     @host = host
-  end
-
-  def version
-    "0.0.1"
   end
 
   def build_errors(build_id, show_progress=true)

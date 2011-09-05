@@ -7,19 +7,19 @@ require 'lib/teamcity-client'
 
 spec = Gem::Specification.new do |s|
   s.name = "teamcity-client"
-  s.version = TeamCityClient.version
+  s.version = TeamCityClient::VERSION
   s.author = "Stephen McDonald"
   s.email = "steve@jupo.org"
   s.homepage = "http://jupo.org"
   s.description = s.summary = "Team City HTTP client."
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
-  s.extra_rdoc_files = ["README.rdoc", "LICENSE", 'TODO']
+  s.extra_rdoc_files = ["README.rdoc", "LICENSE"]
   s.add_dependency "nokogiri"
   s.add_dependency "rest-client"
   s.executables = [s.name]
   s.require_path = 'lib'
-  s.files = %w(LICENSE README.rdoc Rakefile TODO) + Dir.glob("{lib,spec,bin}/**/*")
+  s.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,spec,bin}/**/*")
 end
 
 task :default => :spec
