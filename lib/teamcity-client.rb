@@ -2,7 +2,7 @@ require "rubygems"
 require "rest-client"
 require "nokogiri"
 
-# Team City Ghetto HTTP client.
+# Team City HTTP client.
 #
 # Authentication is not yet supported and therefore guest access is
 # required.

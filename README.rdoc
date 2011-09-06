@@ -1,12 +1,40 @@
-== teamcity-client
+= teamcity-client
 
-Team City Ghetto HTTP client.
+A HTTP client for retrieving data from Team City servers. Currently
+supports the ability to retrieve the number of new build errors for
+a given build, and display progress for a the build if still in
+progress while retrieving errors.
 
 Authentication is not yet supported and therefore guest access is
 required.
 
-Currently supports retrieving the number of new build errors for
-a given build.
+== Installation
 
-Initialize with a host:port string for grabbing and parsing pages
-in the Team City interface.
+  $ gem install teamcity-client
+
+== Usage
+
+teamcity-client can be embedded in your Ruby scripts, or used as
+a command line utility.
+
+In your Ruby script:
+
+  require "rubygems"
+  require "teamcity-cliemt"
+
+  client = TeamCityClient.new "teamcity:8111"
+  errors = client.build_errors(42)
+
+Via command line:
+
+  $ teamcity-client -a host:port -b 42
+
+Command line options:
+
+  Usage: teamcity-client [options]
+
+      -b, --build ID                   Check status and new errors for the given build ID (required)
+      -a, --address HOST:PORT          Host and port of the TeamCity server (default: teamcity:8111)
+      -h, --help                       Show this message
+      -v, --version                    Show version
+
