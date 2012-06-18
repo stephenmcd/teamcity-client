@@ -1,5 +1,7 @@
 = teamcity-client
 
+Created by {Stephen McDonald}[http://twitter.com/stephen_mcd]
+
 A HTTP client for retrieving data from Team City servers. Currently
 supports the ability to retrieve the number of new build errors for
 a given build, and display progress for a the build if still in
